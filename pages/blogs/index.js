@@ -1,9 +1,10 @@
+import BlogBox from "@/components/blogs/BlogBox";
 import CustomAccordion from "common/Accordion";
 import Link from "next/link";
 
 const BlogsPage = () => {
   return (
-    <div className="grid gap-4 grid-cols-12 grid-rows-[50px_minmax(200px,_1fr)] min-h-screen">
+    <div className="grid gap-4 grid-cols-12 grid-rows-[50px_minmax(200px,_1fr)] min-h-screen p-4 bg-gray-100">
       <div className="row-span-2 col-span-3 hidden md:block">
         <CustomAccordion
           header="دسته بندی بلاگ ها"
@@ -33,7 +34,11 @@ const BlogsPage = () => {
           <li className="cursor-pointer">محبوب ترین</li>
         </ul>
       </div>
-      <div className="col-span-12 md:col-span-9 bg-red-300">blog</div>
+      <div className="col-span-12 md:col-span-9 grid grid-cols-6 gap-4">
+        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+          return <BlogBox key={index} className="col-span-2" />;
+        })}
+      </div>
     </div>
   );
 };

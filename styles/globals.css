@@ -7,6 +7,9 @@
   h3 {
     @apply !text-base !font-bold;
   }
+  svg{
+    @apply cursor-pointer
+  }
 }
 
 @layer components {
@@ -21,5 +24,8 @@
   }
   .centering {
     @apply flex items-center justify-center;
+  }
+  .p-layout{
+    @apply px-4
   }
 }
