@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import { ThemeProvider } from "@mui/material/styles";
-import theme from "@/assets/js/customThem";
+import theme from "public/assets/js/customThem";
 
 function MyApp({ Component, pageProps }) {
   return (

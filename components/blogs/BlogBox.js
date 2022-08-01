@@ -1,12 +1,13 @@
 import { BookmarkIcon, HeartIcon } from "@heroicons/react/outline";
+import Image from "next/image";
 
-const BlogBox = ({ className }) => {
+const BlogBox = ({ className, post }) => {
   return (
     <div className={`bg-white p-4 rounded-md shadow max-w-xs ${className}`}>
-      <div className="bg-gray-500 w-full h-48 rounded-md mb-4"></div>
+      <Image src="/public/assets/images/next.png" alt="Landscape picture" width={500} height={500} />
       <div>
-        <h2 className="text-xl font-bold mb-2">عنوان</h2>
-        <p className="mb-2">توضیحات</p>
+        <h2 className="text-xl font-bold mb-2">{post.title}</h2>
+        <p className="mb-2">{post.text}</p>
         <div className="flex-start gap-2">
           <HeartIcon className="w-6 h-6 stroke-red-600" />
           <BookmarkIcon className="w-6 h-6 stroke-blue-600" />

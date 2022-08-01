@@ -1,0 +1,34 @@
+{
+  "blogs": [
+    {
+      "id": 1,
+      "title": "تفاوت نکست و ریکت",
+      "text": "سرعت نکست به طور متوسط سه برابر سرعت ریکت است",
+      "category": "نکست",
+      "author": "سهیل جعفرنژاد",
+      "images": "/public/assets/images/next.png",
+      "like": false,
+      "bookmark": false
+    },
+    {
+      "id": 2,
+      "title": "تفاوت نکست و ریکت",
+      "text": "سرعت نکست به طور متوسط سه برابر سرعت ریکت است",
+      "category": "نکست",
+      "author": "سهیل جعفرنژاد",
+      "images": "/public/assets/images/next.png",
+      "like": false,
+      "bookmark": false
+    },
+    {
+      "id": 3,
+      "title": "تفاوت نکست و ریکت",
+      "text": "سرعت نکست به طور متوسط سه برابر سرعت ریکت است",
+      "category": "نکست",
+      "author": "سهیل جعفرنژاد",
+      "images": "/public/assets/images/next.png",
+      "like": false,
+      "bookmark": false
+    }
+  ]
+}
