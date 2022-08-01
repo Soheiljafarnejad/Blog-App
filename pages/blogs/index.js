@@ -7,15 +7,9 @@ const BlogsPage = ({ posts, categories }) => {
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="grid gap-4 grid-cols-12 grid-rows-[50px_minmax(200px,_1fr)] p-4">
-        <div className="row-span-2 col-span-3 hidden md:block">
-          <Category categories={categories} />
-        </div>
-        <div className="col-span-12 md:col-span-9 bg-white rounded shadow">
-          <Sort />
-        </div>
-        <div className="col-span-12 md:col-span-9 grid grid-cols-6 gap-4">
-          <BlogBox posts={posts} />
-        </div>
+        <Category categories={categories} />
+        <Sort />
+        <BlogBox posts={posts} />
       </div>
     </div>
   );

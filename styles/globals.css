@@ -4,11 +4,14 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    @apply text-sm select-none;
+  }
   h3 {
     @apply !text-base !font-bold;
   }
-  svg{
-    @apply cursor-pointer
+  svg {
+    @apply cursor-pointer;
   }
 }
 
@@ -25,7 +28,7 @@
   .centering {
     @apply flex items-center justify-center;
   }
-  .p-layout{
-    @apply px-4
+  .p-layout {
+    @apply px-4;
   }
 }

@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "نکست",
-      "text": "سرعت نکست به طور متوسط سه برابر سرعت ریکت است",
+      "text": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است",
       "slugCategory": "next",
       "author": "سهیل جعفرنژاد",
       "images": "/next.png",
@@ -13,50 +13,50 @@
     {
       "id": 2,
       "title": "ریکت",
-      "text": "سرعت نکست به طور متوسط سه برابر سرعت ریکت است",
+      "text": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است",
       "slugCategory": "react",
       "author": "سهیل جعفرنژاد",
-      "images": "/next.png",
+      "images": "/react.png",
       "like": false,
       "bookmark": false
     },
     {
       "id": 3,
       "title": "متریال",
-      "text": "سرعت نکست به طور متوسط سه برابر سرعت ریکت است",
+      "text": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است",
       "slugCategory": "materialUi",
       "author": "سهیل جعفرنژاد",
-      "images": "/next.png",
+      "images": "/material.png",
       "like": false,
       "bookmark": false
     },
     {
       "id": 4,
       "title": "تیلویند",
-      "text": "سرعت نکست به طور متوسط سه برابر سرعت ریکت است",
+      "text": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است",
       "slugCategory": "tailwind",
       "author": "سهیل جعفرنژاد",
-      "images": "/next.png",
+      "images": "/tailwind.jpg",
       "like": false,
       "bookmark": false
     },
     {
       "id": 5,
       "title": "ویو جی اس",
-      "text": "سرعت نکست به طور متوسط سه برابر سرعت ریکت است",
+      "text": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است",
       "slugCategory": "vue",
       "author": "سهیل جعفرنژاد",
-      "images": "/next.png",
+      "images": "/vue.jpeg",
       "like": false,
       "bookmark": false
     },
     {
       "id": 6,
       "title": "تیلویند",
-      "text": "سرعت نکست به طور متوسط سه برابر سرعت ریکت است",
+      "text": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است",
       "slugCategory": "tailwind",
       "author": "سهیل جعفرنژاد",
-      "images": "/next.png",
+      "images": "/tailwind.jpg",
       "like": false,
       "bookmark": false
     }

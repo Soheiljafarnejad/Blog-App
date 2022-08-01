@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */ 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -7,10 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily:{
-        "sans":["iranyekan"]
-      }
+      fontFamily: {
+        sans: ["iranyekan"],
+      },
     },
   },
-  plugins: [],
-}
+  plugins: [require("@tailwindcss/aspect-ratio")],
+};
