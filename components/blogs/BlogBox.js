@@ -5,10 +5,10 @@ const BlogBox = ({ posts }) => {
     <div className="col-span-12 md:col-span-9 grid grid-cols-6 gap-8">
       {posts.map((item) => {
         return (
-          <div key={item.id} className={`bg-white p-4 rounded-xl shadow col-span-2`}>
+          <div key={item._id} className={`bg-white p-4 rounded-xl shadow col-span-2`}>
             <div className="aspect-w-16 aspect-h-9">
               <img
-                src={`/assets/images${item.images}`}
+                src={`/assets${item.coverImage}`}
                 alt="img"
                 className="rounded-xl w-full h-full object-center object-cover"
               />
@@ -24,7 +24,7 @@ const BlogBox = ({ posts }) => {
                   <BookmarkIcon className="w-5 h-5 stroke-blue-600" />
                 </span>
                 <p className="py-2 px-3 rounded-lg bg-blue-600 text-white mr-auto">
-                  {item.slugCategory}
+                  {item.slug}
                 </p>
               </div>
             </div>
