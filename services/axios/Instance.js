@@ -2,7 +2,7 @@ import axios from "axios";
 // import { history } from "routes/CustomRouter";
 
 let axiosInstance = axios.create({
-  baseURL: process.env.NEXT_API_APP,
+  baseURL: process.env.NEXT_PUBLIC_API_APP,
   // headers: {
   //   "Content-type": "application/json",
   // },

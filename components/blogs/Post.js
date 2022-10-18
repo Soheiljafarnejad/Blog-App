@@ -1,8 +1,29 @@
 import { BookmarkIcon, HeartIcon } from "@heroicons/react/outline";
 import { BookmarkIcon as BookmarkIconSolid, HeartIcon as HeartIconSolid } from "@heroicons/react/solid";
 import Link from "next/link";
+import { bookmarkPostApi, likePostApi } from "services/apis/Post";
 
 const Post = ({ posts }) => {
+  const likeHandler = (id) => {
+    likePostApi(id)
+      .then(({ data }) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        alert(error.response.data.message);
+      });
+  };
+
+  const bookmarkHandler = (id) => {
+    bookmarkPostApi(id)
+      .then(({ data }) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        alert(error.response.data.message);
+      });
+  };
+
   return (
     <div className="col-span-12 md:col-span-9 grid grid-cols-6 gap-8">
       {posts.map((item) => {
@@ -24,10 +45,12 @@ const Post = ({ posts }) => {
               </Link>
               <div className="flex-start gap-2 w-full">
                 <div className="flex-start gap-1 bg-red-100 text-red-600 rounded-lg py-1.5 px-4">
-                  <span>{item.isLiked ? <HeartIconSolid className="w-5 h-5 fill-red-600" /> : <HeartIcon className="w-5 h-5 stroke-red-600" />}</span>
+                  <span onClick={() => likeHandler(item._id)}>{item.isLiked ? <HeartIconSolid className="w-5 h-5 fill-red-600" /> : <HeartIcon className="w-5 h-5 stroke-red-600" />}</span>
                   <span>{item.likesCount}</span>
                 </div>
-                <span className="bg-blue-100 rounded-lg py-1.5 px-4">{item.isBookmarked ? <BookmarkIconSolid className="w-5 h-5 fill-blue-600" /> : <BookmarkIcon className="w-5 h-5 stroke-blue-600" />}</span>
+                <span onClick={() => bookmarkHandler(item._id)} className="bg-blue-100 rounded-lg py-1.5 px-4">
+                  {item.isBookmarked ? <BookmarkIconSolid className="w-5 h-5 fill-blue-600" /> : <BookmarkIcon className="w-5 h-5 stroke-blue-600" />}
+                </span>
                 <Link href={`/blogs/${item?.category?.englishTitle}`}>
                   <a>
                     <p className="py-2 px-3 rounded-lg bg-blue-600 text-white mr-auto">{item?.category?.title}</p>

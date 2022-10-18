@@ -1,6 +1,6 @@
 import { api } from "services";
 
-export const getAllPost = (params) => {
+export const getAllPostApi = (params) => {
   return api({
     method: "GET",
     url: "posts",
@@ -8,9 +8,23 @@ export const getAllPost = (params) => {
   });
 };
 
-export const getPostByCategory = (categorySlug) => {
+export const getPostByCategoryApi = (categorySlug) => {
   return api({
     method: "GET",
     url: `posts/${categorySlug}`,
+  });
+};
+
+export const likePostApi = (id) => {
+  return api({
+    method: "PUT",
+    url: `posts/like/${id}`,
+  });
+};
+
+export const bookmarkPostApi = (id) => {
+  return api({
+    method: "PUT",
+    url: `posts/bookmark/${id}`,
   });
 };

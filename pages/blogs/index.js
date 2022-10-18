@@ -1,8 +1,8 @@
 import Post from "@/components/blogs/Post";
 import Category from "@/components/blogs/Category";
 import Sort from "@/components/blogs/Sort";
-import { getAllCategory } from "services/apis/Category";
-import { getAllPost } from "services/apis/Post";
+import { getAllCategoryApi } from "services/apis/Category";
+import { getAllPostApi } from "services/apis/Post";
 
 const BlogsPage = ({ posts, categories }) => {
   return (
@@ -19,8 +19,8 @@ const BlogsPage = ({ posts, categories }) => {
 export default BlogsPage;
 
 export const getServerSideProps = async () => {
-  const { data: category } = await getAllCategory();
-  const { data: dataPost } = await getAllPost({ page: 1, limit: 10 });
+  const { data: category } = await getAllCategoryApi();
+  const { data: dataPost } = await getAllPostApi({ page: 1, limit: 10 });
 
   return {
     props: {
