@@ -1,4 +1,4 @@
-import BlogBox from "@/components/blogs/BlogBox";
+import Post from "@/components/blogs/Post";
 import Category from "@/components/blogs/Category";
 import Sort from "@/components/blogs/Sort";
 import { getAllCategory } from "services/apis/Category";
@@ -10,7 +10,7 @@ const BlogsPage = ({ posts, categories }) => {
       <div className="grid gap-4 grid-cols-12 grid-rows-[50px_minmax(200px,_1fr)] p-4">
         <Category categories={categories} />
         <Sort />
-        <BlogBox posts={posts.docs} />
+        <Post posts={posts.docs} />
       </div>
     </div>
   );
