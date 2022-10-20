@@ -28,3 +28,11 @@ export const bookmarkPostApi = (id) => {
     url: `posts/bookmark/${id}`,
   });
 };
+
+export const sendCommentApi = (data) => {
+  return api({
+    method: "PUT",
+    url: `post-comment/save-comment`,
+    data,
+  });
+};

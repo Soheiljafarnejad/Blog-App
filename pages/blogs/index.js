@@ -1,4 +1,4 @@
-import Post from "@/components/blogs/Post";
+import Post from "@/components/blogs/post/Post";
 import Category from "@/components/blogs/Category";
 import Sort from "@/components/blogs/Sort";
 import { getAllCategoryApi } from "services/apis/Category";

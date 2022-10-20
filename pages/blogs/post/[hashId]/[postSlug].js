@@ -1,11 +1,14 @@
-import Post from "@/components/blogs/Post";
-import { BookmarkIcon, HeartIcon } from "@heroicons/react/outline";
-import { BookmarkIcon as BookmarkIconSolid, HeartIcon as HeartIconSolid } from "@heroicons/react/solid";
-import Link from "next/link";
+import Post from "@/components/blogs/post/Post";
+import SendComment from "@/components/blogs/post/SendComment";
 import { getPostByCategoryApi } from "services/apis/Post";
 
 const PostSlug = ({ post }) => {
-  return <Post posts={[post]} />;
+  return (
+    <div className="bg-gray-200 min-h-screen">
+      <Post posts={[post]} />
+      <SendComment id={post._id} />
+    </div>
+  );
 };
 
 export default PostSlug;
