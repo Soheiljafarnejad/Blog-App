@@ -9,7 +9,7 @@ const PostSlug = ({ post }) => {
   console.log(post.comments);
 
   return (
-    <div className="bg-gray-200 min-h-screen p-4">
+    <div className="p-4">
       <Post posts={[post]} className="max-w-3xl mx-auto" />
       <div className="mx-auto max-w-4xl">
         <h2 className="mb-3 mt-6 text-4xl">نظرات</h2>

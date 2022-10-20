@@ -6,7 +6,7 @@ import { getAllPostApi } from "services/apis/Post";
 
 const BlogsPage = ({ posts, categories }) => {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div>
       <div className="grid gap-4 grid-cols-12 grid-rows-[50px_minmax(200px,_1fr)] p-4">
         <Category categories={categories} />
         <Sort />

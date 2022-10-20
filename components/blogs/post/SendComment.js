@@ -20,7 +20,7 @@ const SendComment = ({ id }) => {
       <textarea
         value={value.comment}
         name="comment"
-        className="w-full border p-1"
+        className="w-full border p-2"
         rows={4}
         onChange={(e) => setVale({ ...value, [e.target.name]: e.target.value })}
       />

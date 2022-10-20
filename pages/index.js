@@ -1,9 +1,8 @@
 import Link from "next/link";
 
 export default function Home() {
-
   return (
-    <div className="centering gap-8 min-h-screen">
+    <div className="centering gap-8 mt-64">
       <Link href="/blogs">
         <a className="centering w-80 h-44 text-2xl font-bold border-2 transition-all duration-200 hover:border-blue-500 rounded-xl">بلاگ</a>
       </Link>
