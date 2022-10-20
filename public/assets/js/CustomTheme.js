@@ -1,10 +1,10 @@
 import { createTheme } from '@mui/material/styles';
 
-const theme = createTheme({
+const Theme = createTheme({
   direction: "rtl",
   typography: {
     fontFamily: [`iranyekan`],
   },
 });
 
-export default theme;
+export default Theme;

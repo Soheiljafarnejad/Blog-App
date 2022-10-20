@@ -1,4 +1,4 @@
-import CustomAccordion from "common/Accordion";
+import CustomAccordion from "@/components/common/Accordion";
 import Link from "next/link";
 
 const Category = ({ categories }) => {
