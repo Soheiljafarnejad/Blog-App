@@ -3,7 +3,7 @@ import { BookmarkIcon as BookmarkIconSolid, HeartIcon as HeartIconSolid } from "
 import Link from "next/link";
 import { bookmarkPostApi, likePostApi } from "services/apis/Post";
 
-const Post = ({ posts }) => {
+const Post = ({ posts, className = "" }) => {
   const likeHandler = (id) => {
     likePostApi(id)
       .then(({ data }) => {
@@ -25,7 +25,7 @@ const Post = ({ posts }) => {
   };
 
   return (
-    <div className="col-span-12 md:col-span-9 grid grid-cols-6 gap-8">
+    <div className={`${className}`}>
       {posts.map((item) => {
         return (
           <div key={item._id} className={`bg-white p-4 rounded-xl shadow col-span-2`}>
@@ -45,7 +45,9 @@ const Post = ({ posts }) => {
               </Link>
               <div className="flex-start gap-2 w-full">
                 <div className="flex-start gap-1 bg-red-100 text-red-600 rounded-lg py-1.5 px-4">
-                  <span onClick={() => likeHandler(item._id)}>{item.isLiked ? <HeartIconSolid className="w-5 h-5 fill-red-600" /> : <HeartIcon className="w-5 h-5 stroke-red-600" />}</span>
+                  <span onClick={() => likeHandler(item._id)}>
+                    {item.isLiked ? <HeartIconSolid className="w-5 h-5 fill-red-600" /> : <HeartIcon className="w-5 h-5 stroke-red-600" />}
+                  </span>
                   <span>{item.likesCount}</span>
                 </div>
                 <span onClick={() => bookmarkHandler(item._id)} className="bg-blue-100 rounded-lg py-1.5 px-4">
