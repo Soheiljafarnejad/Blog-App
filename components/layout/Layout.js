@@ -5,13 +5,15 @@ import { useRouter } from "next/router";
 const Layout = ({ children }) => {
   const router = useRouter();
 
-  const { user, loading, error } = useAuth();
+  const { user, loading } = useAuth();
   const dispatch = useAuthDispatch();
+
+  console.log(loading);
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header>
-        <nav className="flex-between px-8 h-14 shadow-md">
+      <header className="shadow-md">
+        <nav className={`flex-between px-8 h-14 ${loading ? "opacity-0" : "opacity-100"}`}>
           <ul className="flex-start gap-8">
             <li>
               <Link href="/">

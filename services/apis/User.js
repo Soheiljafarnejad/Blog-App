@@ -1,7 +1,7 @@
-const { api } = require("services");
+import Api from "services";
 
 export const signUpApi = (data) => {
-  return api({
+  return Api({
     method: "POST",
     url: "user/signup",
     data,
@@ -9,7 +9,7 @@ export const signUpApi = (data) => {
 };
 
 export const signInApi = (data) => {
-  return api({
+  return Api({
     method: "POST",
     url: "user/signin",
     data,
@@ -17,14 +17,14 @@ export const signInApi = (data) => {
 };
 
 export const LogoutApi = () => {
-  return api({
+  return Api({
     method: "GET",
     url: "user/logout",
   });
 };
 
 export const CheckUserCookiesApi = () => {
-  return api({
+  return Api({
     method: "GET",
     url: "user/load",
   });

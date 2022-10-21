@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { sendCommentApi } from "services/apis/Post";
 
 const SendComment = ({ id }) => {
@@ -10,7 +11,7 @@ const SendComment = ({ id }) => {
         console.log(res.data);
       })
       .catch((error) => {
-        alert(error.response.data.message);
+        toast.error(error.response.data.message);
       });
   };
 

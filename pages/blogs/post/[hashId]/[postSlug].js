@@ -6,8 +6,6 @@ import React from "react";
 import { getPostByCategoryApi } from "services/apis/Post";
 
 const PostSlug = ({ post }) => {
-  console.log(post.comments);
-
   return (
     <div className="p-4">
       <Post posts={[post]} className="max-w-3xl mx-auto" />
@@ -33,12 +31,12 @@ const PostSlug = ({ post }) => {
 export default PostSlug;
 
 export const getServerSideProps = async (context) => {
-  const { query, params } = context;
+  const { query, req } = context;
 
-  console.log({ query });
-  console.log({ params });
+  let headers = undefined;
+  if (req?.headers?.cookie) headers = { Cookie: req.headers?.cookie };
 
-  const { data } = await getPostByCategoryApi(query.postSlug);
+  const { data } = await getPostByCategoryApi(query.postSlug, headers);
   return {
     props: {
       post: data,

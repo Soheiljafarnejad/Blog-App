@@ -1,26 +1,32 @@
 import { BookmarkIcon, HeartIcon } from "@heroicons/react/outline";
 import { BookmarkIcon as BookmarkIconSolid, HeartIcon as HeartIconSolid } from "@heroicons/react/solid";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import toast from "react-hot-toast";
 import { bookmarkPostApi, likePostApi } from "services/apis/Post";
 
 const Post = ({ posts, className = "" }) => {
+  const router = useRouter();
+
   const likeHandler = (id) => {
     likePostApi(id)
       .then(({ data }) => {
-        console.log(data);
+        const push = { pathname: router.pathname, query: router.query };
+        router.push(push, undefined, { scroll: false });
       })
       .catch((error) => {
-        alert(error.response.data.message);
+        toast.error(error.response.data.message);
       });
   };
 
   const bookmarkHandler = (id) => {
     bookmarkPostApi(id)
       .then(({ data }) => {
-        console.log(data);
+        const push = { pathname: router.pathname, query: router.query };
+        router.push(push, undefined, { scroll: false });
       })
       .catch((error) => {
-        alert(error.response.data.message);
+        toast.error(error.response.data.message);
       });
   };
 

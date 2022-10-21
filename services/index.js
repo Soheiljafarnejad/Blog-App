@@ -1,21 +1,35 @@
-import axiosInstance from "./axios/Instance";
-import { errorHandler } from "./errors";
+import axios from "axios";
+import Router from "next/router";
 
-export const api = async (options, notAuthorize, dontHandleError) => {
-  let op = options;
-  if (!notAuthorize) {
-    op = {
-      ...options,
-      headers: {
-        // Authorization: localStorage.getItem("Authorization"),
-      },
-    };
+let http = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_APP,
+  // headers: {
+  //   "Content-type": "application/json",
+  // },
+});
+
+http.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    if (error.response.status === 401) {
+      Router.push("/signin");
+    }
+    return Promise.reject(error);
   }
+);
+
+const Api = async (options, notAuthorize, headers) => {
+  let op = { ...options, headers };
+  if (!notAuthorize) op = { ...op, withCredentials: true };
 
   try {
-    const response = await axiosInstance({ ...op });
+    const response = await http({ ...op });
     return response.data;
   } catch (error) {
-    return await errorHandler(error, dontHandleError);
+    return await Promise.reject(error);
   }
 };
+
+export default Api;

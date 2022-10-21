@@ -65,7 +65,7 @@ const AuthProvider = ({ children }) => {
         });
       },
 
-    CHECKCOOKIES:
+    CHECK_COOKIES:
       ({ dispatch }) =>
       async (action) => {
         dispatch({ type: "PENDING" });
@@ -73,14 +73,16 @@ const AuthProvider = ({ children }) => {
           .then((res) => {
             dispatch({ type: "SUCCESS", payload: res });
           })
-          .catch((err) => {});
+          .catch((err) => {
+            dispatch({ type: "REJECT", payload: err?.response?.data?.message });
+          });
       },
   };
 
   const [value, dispatch] = useReducerAsync(reducer, initialState, asyncActionHandlers);
 
   useEffect(() => {
-    dispatch({ type: "CHECKCOOKIES" });
+    dispatch({ type: "CHECK_COOKIES" });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

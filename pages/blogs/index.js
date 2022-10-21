@@ -18,9 +18,12 @@ const BlogsPage = ({ posts, categories }) => {
 
 export default BlogsPage;
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async ({ req }) => {
   const { data: category } = await getAllCategoryApi();
-  const { data: dataPost } = await getAllPostApi({ page: 1, limit: 10 });
+  
+  let headers = undefined;
+  if (req?.headers?.cookie) headers = { Cookie: req.headers?.cookie };
+  const { data: dataPost } = await getAllPostApi({ page: 1, limit: 10 }, headers);
 
   return {
     props: {

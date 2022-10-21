@@ -1,7 +1,7 @@
-const { api } = require("services");
+import Api from "services";
 
 export const getAllCategoryApi = () => {
-  return api({
+  return Api({
     method: "GET",
     url: "post-category",
   });
