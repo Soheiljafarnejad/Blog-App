@@ -1,4 +1,4 @@
-import { useAuth } from "Context/AuthProvider";
+import { useAuth, useAuthDispatch } from "Context/AuthProvider";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -6,12 +6,13 @@ const Layout = ({ children }) => {
   const router = useRouter();
 
   const { user, loading, error } = useAuth();
+  const dispatch = useAuthDispatch();
 
   return (
     <div className="min-h-screen bg-gray-50">
       <header>
-        <nav>
-          <ul className="flex-start gap-8 px-4 h-14 shadow-md">
+        <nav className="flex-between px-8 h-14 shadow-md">
+          <ul className="flex-start gap-8">
             <li>
               <Link href="/">
                 <a className={`${router.pathname === "/" ? "text-blue-500" : ""}`}>خانه</a>
@@ -27,8 +28,15 @@ const Layout = ({ children }) => {
                 <a className={`${router.pathname === "/admin" ? "text-blue-500" : ""}`}>پنل ادمین</a>
               </Link>
             </li>
+          </ul>
+          <ul className="flex-end gap-8">
             {user ? (
-              <li>{user.email}</li>
+              <>
+                <li>
+                  <button onClick={() => dispatch({ type: "SIGNOUT" })}>خروج</button>
+                </li>
+                <li>{user.email}</li>
+              </>
             ) : (
               <>
                 <li>

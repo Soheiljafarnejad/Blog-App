@@ -1,7 +1,7 @@
-import  Router  from "next/router";
-import { createContext, useContext } from "react";
+import Router from "next/router";
+import { createContext, useContext, useEffect } from "react";
 import toast from "react-hot-toast";
-import { signInApi, signUpApi } from "services/apis/User";
+import { CheckUserCookiesApi, LogoutApi, signInApi, signUpApi } from "services/apis/User";
 import { useReducerAsync } from "use-reducer-async";
 
 const AuthContext = createContext();
@@ -56,23 +56,33 @@ const AuthProvider = ({ children }) => {
           });
       },
 
-    // SIGNOUT:
-    //   ({ dispatch }) =>
-    //   async (action) => {
-    //     dispatch({ type: "PENDING" });
-    //     await signUpApi(action.payload)
-    //       .then((res) => {
-    //         dispatch({ type: "SUCCESS", payload: res });
-    //         toast.success("خوش آمدید");
-    //       })
-    //       .catch((err) => {
-    //         dispatch({ type: "REJECT", payload: err?.response?.data?.message });
-    //         toast.error(err?.response?.data?.message);
-    //       });
-    //   },
+    SIGNOUT:
+      ({ dispatch }) =>
+      async (action) => {
+        dispatch({ type: "PENDING" });
+        await LogoutApi().then((res) => {
+          window.location.href = "/";
+        });
+      },
+
+    CHECKCOOKIES:
+      ({ dispatch }) =>
+      async (action) => {
+        dispatch({ type: "PENDING" });
+        await CheckUserCookiesApi()
+          .then((res) => {
+            dispatch({ type: "SUCCESS", payload: res });
+          })
+          .catch((err) => {});
+      },
   };
 
   const [value, dispatch] = useReducerAsync(reducer, initialState, asyncActionHandlers);
+
+  useEffect(() => {
+    dispatch({ type: "CHECKCOOKIES" });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <AuthContext.Provider value={value}>

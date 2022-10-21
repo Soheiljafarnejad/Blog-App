@@ -15,3 +15,17 @@ export const signInApi = (data) => {
     data,
   });
 };
+
+export const LogoutApi = () => {
+  return api({
+    method: "GET",
+    url: "user/logout",
+  });
+};
+
+export const CheckUserCookiesApi = () => {
+  return api({
+    method: "GET",
+    url: "user/load",
+  });
+};

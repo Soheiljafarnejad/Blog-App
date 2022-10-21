@@ -1,7 +1,9 @@
 import CustomButton from "@/components/common/CustomButton";
 import CustomTextField from "@/components/common/CustomTextField";
-import { useAuthDispatch } from "Context/AuthProvider";
+import { useAuth, useAuthDispatch } from "Context/AuthProvider";
 import { useFormik } from "formik";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import * as yup from "yup";
 
 const initialValues = {
@@ -14,6 +16,13 @@ const initialValues = {
 
 const SignUp = () => {
   const dispatch = useAuthDispatch();
+
+  const { user } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (user) router.push("/");
+  }, [router, user]);
 
   const onSubmit = (values) => {
     dispatch({ type: "SIGNUP", payload: { ...values, passwordConfirm: undefined } });
