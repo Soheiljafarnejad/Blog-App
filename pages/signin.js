@@ -1,17 +1,29 @@
 import CustomButton from "@/components/common/CustomButton";
 import CustomTextField from "@/components/common/CustomTextField";
 import { useFormik } from "formik";
+import { useRouter } from "next/router";
+import toast from "react-hot-toast";
+import { signInApi } from "services/apis/User";
 import * as yup from "yup";
 
 const SignIn = () => {
+  const router = useRouter();
+
   const initialValues = {
     email: "",
     password: "",
   };
 
   const onSubmit = (values) => {
-    // post to Api
-    toast.success("ثبت نام با موفقیت انجام شد.");
+    signInApi(values)
+      .then((res) => {
+        console.log(res);
+        toast.success("خوش آمدید");
+        router.push("/");
+      })
+      .catch((err) => {
+        toast.error(err?.response?.data?.message);
+      });
   };
 
   const validationSchema = yup.object({
@@ -48,6 +60,7 @@ const SignIn = () => {
         />
         <CustomTextField
           name="password"
+          type="password"
           error={formik.touched.password && Boolean(formik.errors.password)}
           onBlur={formik.handleBlur}
           value={formik.values.password}

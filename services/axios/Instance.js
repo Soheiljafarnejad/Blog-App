@@ -3,6 +3,7 @@ import axios from "axios";
 
 let axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_APP,
+  withCredentials: true,
   // headers: {
   //   "Content-type": "application/json",
   // },

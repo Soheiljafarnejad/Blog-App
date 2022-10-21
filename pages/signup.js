@@ -1,6 +1,8 @@
 import CustomButton from "@/components/common/CustomButton";
 import CustomTextField from "@/components/common/CustomTextField";
 import { useFormik } from "formik";
+import toast from "react-hot-toast";
+import { signUpApi } from "services/apis/User";
 import * as yup from "yup";
 
 const SignUp = () => {
@@ -13,8 +15,13 @@ const SignUp = () => {
   };
 
   const onSubmit = (values) => {
-    // post to Api
-    toast.success("ثبت نام با موفقیت انجام شد.");
+    signUpApi({ ...values, passwordConfirm: undefined })
+      .then((res) => {
+        toast.success("ثبت نام با موفقیت انجام شد.");
+      })
+      .catch((err) => {
+        toast.error(err?.response?.data?.message);
+      });
   };
 
   const validationSchema = yup.object({
