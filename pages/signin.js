@@ -1,29 +1,19 @@
 import CustomButton from "@/components/common/CustomButton";
 import CustomTextField from "@/components/common/CustomTextField";
+import { useAuthDispatch } from "Context/AuthProvider";
 import { useFormik } from "formik";
-import { useRouter } from "next/router";
-import toast from "react-hot-toast";
-import { signInApi } from "services/apis/User";
 import * as yup from "yup";
 
-const SignIn = () => {
-  const router = useRouter();
+const initialValues = {
+  email: "",
+  password: "",
+};
 
-  const initialValues = {
-    email: "",
-    password: "",
-  };
+const SignIn = () => {
+  const dispatch = useAuthDispatch();
 
   const onSubmit = (values) => {
-    signInApi(values)
-      .then((res) => {
-        console.log(res);
-        toast.success("خوش آمدید");
-        router.push("/");
-      })
-      .catch((err) => {
-        toast.error(err?.response?.data?.message);
-      });
+    dispatch({ type: "SIGNIN", payload: values });
   };
 
   const validationSchema = yup.object({

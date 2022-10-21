@@ -27,16 +27,22 @@ const Layout = ({ children }) => {
                 <a className={`${router.pathname === "/admin" ? "text-blue-500" : ""}`}>پنل ادمین</a>
               </Link>
             </li>
-            <li>
-              <Link href="/signin">
-                <a className={`${router.pathname === "/signin" ? "text-blue-500" : ""}`}>ورود</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/signup">
-                <a className={`${router.pathname === "/signup" ? "text-blue-500" : ""}`}>ثبت نام</a>
-              </Link>
-            </li>
+            {user ? (
+              <li>{user.email}</li>
+            ) : (
+              <>
+                <li>
+                  <Link href="/signin">
+                    <a className={`${router.pathname === "/signin" ? "text-blue-500" : ""}`}>ورود</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/signup">
+                    <a className={`${router.pathname === "/signup" ? "text-blue-500" : ""}`}>ثبت نام</a>
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </nav>
       </header>

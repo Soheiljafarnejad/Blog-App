@@ -1,27 +1,22 @@
 import CustomButton from "@/components/common/CustomButton";
 import CustomTextField from "@/components/common/CustomTextField";
+import { useAuthDispatch } from "Context/AuthProvider";
 import { useFormik } from "formik";
-import toast from "react-hot-toast";
-import { signUpApi } from "services/apis/User";
 import * as yup from "yup";
 
+const initialValues = {
+  email: "",
+  password: "",
+  passwordConfirm: "",
+  name: "",
+  phoneNumber: "",
+};
+
 const SignUp = () => {
-  const initialValues = {
-    email: "",
-    password: "",
-    passwordConfirm: "",
-    name: "",
-    phoneNumber: "",
-  };
+  const dispatch = useAuthDispatch();
 
   const onSubmit = (values) => {
-    signUpApi({ ...values, passwordConfirm: undefined })
-      .then((res) => {
-        toast.success("ثبت نام با موفقیت انجام شد.");
-      })
-      .catch((err) => {
-        toast.error(err?.response?.data?.message);
-      });
+    dispatch({ type: "SIGNUP", payload: { ...values, passwordConfirm: undefined } });
   };
 
   const validationSchema = yup.object({

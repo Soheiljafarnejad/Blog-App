@@ -24,6 +24,7 @@
     "react-hot-toast": "^2.4.0",
     "stylis": "^4.1.2",
     "stylis-plugin-rtl": "^2.1.1",
+    "use-reducer-async": "^2.1.1",
     "yup": "^0.32.11"
   },
   "devDependencies": {

@@ -10,7 +10,7 @@ const BlogsPage = ({ posts, categories }) => {
       <div className="grid gap-4 grid-cols-12 grid-rows-[50px_minmax(200px,_1fr)] p-4">
         <Category categories={categories} />
         <Sort />
-        <Post posts={posts.docs} />
+        <Post posts={posts.docs} className="col-span-12 md:col-span-9 grid grid-cols-6 gap-8" />
       </div>
     </div>
   );
