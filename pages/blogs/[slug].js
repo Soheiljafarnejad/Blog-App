@@ -19,12 +19,12 @@ const BlogsPage = ({ posts, categories }) => {
 export default BlogsPage;
 
 export const getServerSideProps = async (context) => {
-  const { params, req } = context;
+  const { params, req, query } = context;
   const { data: category } = await getAllCategoryApi();
 
   let headers = undefined;
   if (req?.headers?.cookie) headers = { Cookie: req.headers?.cookie };
-  const customParams = { categorySlug: params.slug, limit: 10, page: 1 };
+  const customParams = { categorySlug: params.slug, limit: 10, page: 1, ...query };
   const { data: dataPost } = await getAllPostApi(customParams, headers);
 
   return {
