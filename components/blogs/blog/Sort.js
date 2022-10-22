@@ -19,7 +19,7 @@ const Sort = () => {
   };
 
   return (
-    <div className="col-span-12 md:col-span-9 bg-white rounded shadow">
+    <div className="bg-white rounded shadow h-full">
       <ul className="flex-start gap-8 px-4 h-full">
         {sortOptions.map((item) => {
           return (

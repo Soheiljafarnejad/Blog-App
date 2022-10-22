@@ -1,9 +1,9 @@
-import CustomAccordion from "@/components/common/Accordion";
+import CustomAccordion from "@/components/common/CustomAccordion";
 import Link from "next/link";
 
 const Category = ({ categories }) => {
   return (
-    <div className="row-span-2 col-span-3 hidden md:block">
+    <div>
       <CustomAccordion header="دسته بندی بلاگ ها" name="category" className="!p-0 !shadow">
         <div className="flex-start !items-stretch flex-col gap-4">
           <Link href={`/blogs`}>

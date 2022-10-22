@@ -8,7 +8,9 @@ import { getPostByCategoryApi } from "services/apis/Post";
 const PostSlug = ({ post }) => {
   return (
     <div className="p-4">
-      <Post posts={[post]} className="max-w-3xl mx-auto" />
+      <div className="mx-auto max-w-2xl">
+        <Post posts={[post]} />
+      </div>
       <div className="mx-auto max-w-4xl">
         <h2 className="mb-3 mt-6 text-4xl">نظرات</h2>
         {post.comments.map((item) => {

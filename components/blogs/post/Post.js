@@ -31,7 +31,7 @@ const Post = ({ posts, className = "" }) => {
   };
 
   return (
-    <div className={`${className}`}>
+    <>
       {posts.map((item) => {
         return (
           <div key={item._id} className={`bg-white p-4 rounded-xl shadow col-span-2`}>
@@ -69,7 +69,7 @@ const Post = ({ posts, className = "" }) => {
           </div>
         );
       })}
-    </div>
+    </>
   );
 };
 
