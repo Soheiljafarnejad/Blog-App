@@ -1,14 +1,18 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { sendCommentApi } from "services/apis/Post";
 
-const SendComment = ({ id }) => {
-  const [value, setVale] = useState({ comment: "" });
+const SendComment = ({ postId, responseTo, setToggle }) => {
+  const [value, setVale] = useState({ content: "" });
+  const router = useRouter();
 
   const submitHandler = () => {
-    sendCommentApi({ ...value, postId: id })
+    sendCommentApi({ ...value, postId, responseTo })
       .then((res) => {
-        console.log(res.data);
+        toast.success(res.message);
+        router.push({ pathname: router.pathname, query: router.query });
+        SendComment({ content: "" });
       })
       .catch((error) => {
         toast.error(error.response.data.message);
@@ -19,8 +23,8 @@ const SendComment = ({ id }) => {
     <div className="bg-white flex-start flex-col items-start gap-4 p-4 max-w-4xl rounded-xl mb-4">
       <p className="mb-2">ارسال دیدگاه جدید</p>
       <textarea
-        value={value.comment}
-        name="comment"
+        value={value.content}
+        name="content"
         className="w-full border p-2"
         rows={4}
         onChange={(e) => setVale({ ...value, [e.target.name]: e.target.value })}

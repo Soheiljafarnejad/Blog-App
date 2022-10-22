@@ -24,7 +24,7 @@ const PostSlug = ({ post }) => {
             )
           );
         })}
-        <SendComment id={post._id} />
+        <SendComment postId={post._id} />
       </div>
     </div>
   );

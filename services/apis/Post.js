@@ -39,7 +39,7 @@ export const bookmarkPostApi = (id) => {
 
 export const sendCommentApi = (data) => {
   return Api({
-    method: "PUT",
+    method: "POST",
     url: `post-comment/save-comment`,
     data,
   });

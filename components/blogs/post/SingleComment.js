@@ -2,6 +2,7 @@ import { useState } from "react";
 import SendComment from "./SendComment";
 
 const SingleComment = ({ comment }) => {
+  console.log(comment);
   const [toggle, setToggle] = useState(false);
 
   return (
@@ -11,7 +12,7 @@ const SingleComment = ({ comment }) => {
         {toggle ? "بیخیال" : "پاسخ دادن"}
       </p>
 
-      {toggle && <SendComment />}
+      {toggle && <SendComment postId={comment.postId} responseTo={comment._id} />}
     </div>
   );
 };
