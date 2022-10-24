@@ -1,9 +1,10 @@
 import CustomButton from "@/components/common/CustomButton";
 import CustomTextField from "@/components/common/CustomTextField";
-import { useAuth, useAuthDispatch } from "Context/AuthProvider";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { SignInUser } from "Redux/Reducers/AuthReducer";
 import * as yup from "yup";
 
 const initialValues = {
@@ -12,8 +13,8 @@ const initialValues = {
 };
 
 const SignIn = () => {
-  const dispatch = useAuthDispatch();
-  const { user } = useAuth();
+  const { user } = useSelector((store) => store.userReducer);
+  const dispatch = useDispatch();
   const router = useRouter();
 
   useEffect(() => {
@@ -21,7 +22,7 @@ const SignIn = () => {
   }, [router, user]);
 
   const onSubmit = (values) => {
-    dispatch({ type: "SIGNIN", payload: values });
+    dispatch(SignInUser(values));
   };
 
   const validationSchema = yup.object({

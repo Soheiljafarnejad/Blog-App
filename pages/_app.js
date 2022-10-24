@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import { ThemeProvider } from "@mui/material/styles";
-import Layout from "components/layout/Layout";
+import Layout from "layout/Layout";
 import { Toaster } from "react-hot-toast";
 
 // material rtl
@@ -9,7 +9,7 @@ import Theme from "@/assets/js/CustomTheme";
 import createCache from "@emotion/cache";
 import { prefixer } from "stylis";
 import rtlPlugin from "stylis-plugin-rtl";
-import AuthProvider from "Context/AuthProvider";
+import { wrapper } from "Redux/Store";
 
 function MyApp({ Component, pageProps }) {
   const cacheRtl = createCache({
@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }) {
   });
 
   return (
-    <AuthProvider>
+    <>
       <CacheProvider value={cacheRtl}>
         <ThemeProvider theme={Theme}>
           <Layout>
@@ -27,8 +27,8 @@ function MyApp({ Component, pageProps }) {
           <Toaster />
         </ThemeProvider>
       </CacheProvider>
-    </AuthProvider>
+    </>
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);

@@ -1,14 +1,19 @@
-import { useAuth, useAuthDispatch } from "Context/AuthProvider";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { checkCookies, SignOut } from "Redux/Reducers/AuthReducer";
 
 const Layout = ({ children }) => {
   const router = useRouter();
 
-  const { user, loading } = useAuth();
-  const dispatch = useAuthDispatch();
+  const { user, loading } = useSelector((store) => store.userReducer);
 
-  console.log(loading);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkCookies());
+  }, [dispatch]);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -35,7 +40,7 @@ const Layout = ({ children }) => {
             {user ? (
               <>
                 <li>
-                  <button onClick={() => dispatch({ type: "SIGNOUT" })}>خروج</button>
+                  <button onClick={() => dispatch(SignOut())}>خروج</button>
                 </li>
                 <li>{user.email}</li>
               </>

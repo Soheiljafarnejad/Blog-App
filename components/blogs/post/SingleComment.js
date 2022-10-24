@@ -2,7 +2,6 @@ import { useState } from "react";
 import SendComment from "./SendComment";
 
 const SingleComment = ({ comment }) => {
-  console.log(comment);
   const [toggle, setToggle] = useState(false);
 
   return (
